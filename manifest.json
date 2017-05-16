@@ -1,0 +1,32 @@
+{
+  "name": "1-click-fwd",
+  "version": "1.0",
+  "description": "1-click-fwd Gmail chrome extension",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApPJ8oFtCKrNQo1fVuIA7EoophpKWKt4mveU5XgY3OkEmGxT0SnF34p3Z97jJjWn81c2eKBSuF4cSD5DUVR5pgGUFVZOnOff7p3LJ/QwKn4xXfCcTkw4wz7tuhlGanMRicWFQrimea5fdYhww6zjJ+XqX+Du2hvaSkKIj+zRCsZawuyMs99GOMFtf36LmeVtwp3aieiPfHgA+DCeHtDsrNeWriLTBoiipyfrsNGjADSj6S9MTOFUMawZI86FmJCxUFg7du4Vhh+AQPrwrPJxdYxD/R/wxazLKrDAiVDFobYU4y6cgN/Jn4COexsOVarPmn5qjLQcExA5FQV8uf7X/wQIDAQAB",
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["inboxsdk.js","content.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js", "gapi-chrome-apps.js"]
+  },
+  "content_security_policy": "script-src 'self' https://apis.google.com; object-src 'self'",
+  // "web_accessible_resources": [
+  //   "jquery-1.10.2.min.js",
+  //   "gmail.js",
+  //   "main.js"
+  // ],
+  "manifest_version": 2,
+  "permissions": [
+    "https://mail.google.com/",
+    "https://inbox.google.com/",
+    "identity",
+    "https://accounts.google.com/*"
+  ],
+  "oauth2": {
+    "client_id": "309166774293-po2g6ansiapdvgjs4a8rmpuqq41bcq9g.apps.googleusercontent.com",
+    "scopes": ["profile" ,"email" ,"https://www.googleapis.com/auth/gmail.send", "https://www.googleapis.com/auth/gmail.modify"]
+  }
+}
